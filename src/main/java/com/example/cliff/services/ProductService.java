@@ -1,34 +1,33 @@
 package com.example.cliff.services;
 
 import com.example.cliff.model.Products;
+import com.example.cliff.repositories.ProductRepo;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class ProductService {
-    public Products getProductById(Long id) {
-        for (Products product : products){
-            if (product.getId().equals(id)){return product;}
-        }
-        return null;
-    }
+    private final ProductRepo productRepo;
 
-    List<Products> products = new ArrayList<>();
-    private long ID;
-    {
-        products.add(new Products("Iphone22", "Simple description", "Moscow", "Ilya", 67000, ++ID));
-        products.add(new Products("Iphone25", "Simple description", "London", "Basya", 78000, ++ID));
+    public Products getProductById(Long id) {
+        return productRepo.findById(id).orElse(null);
     }
+    List<Products> products = new ArrayList<>();
     public List<Products> listProducts(){
         return products;
     }
     public void saveProduct(Products product){
-        product.setId(++ID);
-        products.add(product);
+        log.info("Saving new {}", product);
+        productRepo.save(product);
     }
     public void deleteProduct(Long id){
-        products.removeIf(product -> product.getId().equals(id));
+        productRepo.deleteById(id);
     }
+
 }

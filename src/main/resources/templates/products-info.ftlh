@@ -16,7 +16,7 @@
     </div>
 <hr>
 <h3>Создать новый товар</h3>
-<form action="/products/delete/{product.id}" method="post">
+<form action="/products/delete/${product.id}" method="post">
     <input type="submit" value="Удалить товар"/>
 </form>
 </body>

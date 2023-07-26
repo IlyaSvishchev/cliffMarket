@@ -1,8 +1,10 @@
 package com.example.cliff.controllers;
 
 import com.example.cliff.model.Products;
+import com.example.cliff.repositories.ProductRepo;
 import com.example.cliff.services.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class ProductController {
     private final ProductService productService;
+    private final ProductRepo productRepo;
 
     @GetMapping("/products")
     public String products(Model model){

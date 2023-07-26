@@ -16,11 +16,11 @@
 <hr>
 <h3>Создать новый товар</h3>
 <form action="/products/create" method="post">
-    Название объявления: <input type="text" name="title"/><br><br>
-    Описание: <input type="text" name="description"/><br><br>
-    Город: <input type="text" name="city"/><br><br>
-    Имя: <input type="text" name="author"/><br><br>
-    Цена: <input type="text" name="price"/><br><br>
+    Название объявления: <input type="text" name="title"/><br>
+    Описание: <input type="text" name="description"/><br>
+    Город: <input type="text" name="city"/><br>
+    Имя: <input type="text" name="author"/><br>
+    Цена: <input type="number" name="price"/><br>
     <input type="submit" value="Добавить товар"/>
 </form>
 </body>
